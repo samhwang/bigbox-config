@@ -1,5 +1,6 @@
 version: "3.2"
 services:
+  ## ARR STACK
   radarr:
     container_name: radarr
     image: ghcr.io/hotio/radarr:latest
@@ -50,6 +51,87 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - /mnt/Vault/arr/config/bazarr:/config
       - /mnt/Vault/arr/data/media:/data/media
+
+  lidarr:
+    container_name: lidarr
+    image: ghcr.io/hotio/lidarr
+    ports:
+      - "8686:8686"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - UMASK=002
+      - TZ=Australia/Melbourne
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /mnt/Vault/arr/config/lidarr:/config
+      - /mnt/Vault/arr/data/media:/data
+
+  prowlarr:
+    container_name: prowlarr
+    image: ghcr.io/hotio/prowlarr
+    ports:
+      - "9696:9696"
+    logging:
+      driver: json-file
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - UMASK=002
+      - TZ=Australia/Melbourne
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /mnt/Vault/arr/config/prowlarr:/config
+
+  readarr:
+    container_name: readarr
+    image: ghcr.io/hotio/readarr
+    ports:
+      - "8787:8787"
+    logging:
+      driver: json-file
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - UMASK=002
+      - TZ=Australia/Melbourne
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /mnt/Vault/arr/config/readarr:/config
+      - /mnt/Vault/arr/data/media:/data
+
+  ## DOWNLOADERS
+  jackett:
+    container_name: jackett
+    image: ghcr.io/hotio/jackett
+    ports:
+      - "9117:9117"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - UMASK=002
+      - TZ=Australia/Melbourne
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /mnt/Vault/arr/config/jackett:/config
+
+  qbittorrent:
+    container_name: qbittorrent
+    image: ghcr.io/hotio/qbittorrent
+    ports:
+      - "8080:8080"
+    logging:
+      driver: json-file
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - UMASK=002
+      - TZ=Australia/Melbourne
+      - WEBUI_PORTS=8080/tcp,8080/udp
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /mnt/Vault/arr/config/qbitorrent:/config
+      - /mnt/Vault/arr/data/torrents:/data/torrents
 
   sabnzbd:
     container_name: sabnzbd
