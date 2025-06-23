@@ -14,8 +14,9 @@ services:
       - TZ=Australia/Melbourne
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - /docker/appdata/radarr:/config
+      - /mnt/Vault/arr/config/radarr:/config
       - /mnt/Vault/arr/data:/data
+
   sonarr:
     container_name: sonarr
     image: ghcr.io/hotio/sonarr:latest
@@ -30,8 +31,9 @@ services:
       - TZ=Australia/Melbourne
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - /docker/appdata/sonarr:/config
+      - /mnt/Vault/arr/config/sonarr:/config
       - /mnt/Vault/arr/data:/data
+
   bazarr:
     container_name: bazarr
     image: ghcr.io/hotio/bazarr:latest
@@ -46,8 +48,9 @@ services:
       - TZ=Australia/Melbourne
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - /docker/appdata/bazarr:/config
+      - /mnt/Vault/arr/config/bazarr:/config
       - /mnt/Vault/arr/data/media:/data/media
+
   sabnzbd:
     container_name: sabnzbd
     image: ghcr.io/hotio/sabnzbd:latest
@@ -63,5 +66,5 @@ services:
       - TZ=Australia/Melbourne
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - /docker/appdata/sabnzbd:/config
+      - /mnt/Vault/arr/config/sabnzbd:/config
       - /mnt/Vault/arr/data/usenet:/data/usenet:rw
