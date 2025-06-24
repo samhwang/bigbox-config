@@ -2,7 +2,7 @@ services:
   ## ARR STACK
   radarr:
     container_name: radarr
-    image: lscr.io/linuxserver/radarr:latest
+    image: lscr.io/linuxserver/radarr
     restart: unless-stopped
     logging:
       driver: json-file
@@ -19,7 +19,7 @@ services:
 
   sonarr:
     container_name: sonarr
-    image: lscr.io/linuxserver/sonarr:latest
+    image: lscr.io/linuxserver/sonarr
     restart: unless-stopped
     logging:
       driver: json-file
@@ -36,7 +36,7 @@ services:
 
   bazarr:
     container_name: bazarr
-    image: lscr.io/linuxserver/bazarr:latest
+    image: lscr.io/linuxserver/bazarr
     restart: unless-stopped
     logging:
       driver: json-file
@@ -84,7 +84,7 @@ services:
 
   readarr:
     container_name: readarr
-    image: lscr.io/linuxserver/readarr
+    image: lscr.io/linuxserver/readarr:develop
     ports:
       - "8787:8787"
     logging:
@@ -102,7 +102,7 @@ services:
   ## JELLYFIN
   jellyfin:
     container_name: jellyfin
-    image: lscr.io/linuxserver/jellyfin
+    image: jellyfin/jellyfin
     ports:
       - "8096:8096"
     environment:
@@ -117,7 +117,7 @@ services:
 
   jellyseerr:
     container_name: jellyseerr
-    image: lscr.io/linuxserver/jellyseerr
+    image: fallenbagel/jellyseerr
     ports:
       - "5055:5055"
     environment:
@@ -164,7 +164,7 @@ services:
 
   sabnzbd:
     container_name: sabnzbd
-    image: lscr.io/linuxserver/sabnzbd:latest
+    image: lscr.io/linuxserver/sabnzbd
     restart: unless-stopped
     logging:
       driver: json-file
