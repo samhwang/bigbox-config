@@ -41,5 +41,5 @@ Running TrueNAS Scale 25.04.1
 | 4     | Seagate IronWolf | WW66Q6TJ | 4TB      | Jun 2025 |
 | 5     | Seagate IronWolf | WW66V8WE | 4TB      | Jun 2025 |
 | 6     | Seagate IronWolf | WW66T7KV | 4TB      | Jun 2025 |
-| 7     | Seagate IronWolf |          | 4TB      |          |
-| 8     | Seagate IronWolf |          | 4TB      |          |
+| 7     | Seagate IronWolf | WW65X0PE | 4TB      | Jun 2025 |
+| 8     | Seagate IronWolf | WW65x0VV | 4TB      | Jun 2025 |
