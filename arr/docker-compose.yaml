@@ -162,20 +162,20 @@ services:
       - /mnt/vault/arr2/config/qbitorrent:/config
       - /mnt/vault/arr2/data/torrents:/data/torrents
 
-  sabnzbd:
-    container_name: sabnzbd
-    image: lscr.io/linuxserver/sabnzbd
-    restart: unless-stopped
-    logging:
-      driver: json-file
-    ports:
-      - 8082:8080
-      - 9090:9090
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=Australia/Melbourne
-    volumes:
-      - /etc/localtime:/etc/localtime:ro
-      - /mnt/vault/arr2/config/sabnzbd:/config
-      - /mnt/vault/arr2/data/usenet:/data/usenet:rw
+  # sabnzbd:
+  #   container_name: sabnzbd
+  #   image: lscr.io/linuxserver/sabnzbd
+  #   restart: unless-stopped
+  #   logging:
+  #     driver: json-file
+  #   ports:
+  #     - 8082:8080
+  #     - 9090:9090
+  #   environment:
+  #     - PUID=1000
+  #     - PGID=1000
+  #     - TZ=Australia/Melbourne
+  #   volumes:
+  #     - /etc/localtime:/etc/localtime:ro
+  #     - /mnt/vault/arr2/config/sabnzbd:/config
+  #     - /mnt/vault/arr2/data/usenet:/data/usenet:rw
