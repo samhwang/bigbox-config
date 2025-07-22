@@ -82,22 +82,22 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - /mnt/vault/arr2/config/prowlarr:/config
 
-  readarr:
-    container_name: readarr
-    image: lscr.io/linuxserver/readarr:develop
-    ports:
-      - "8787:8787"
-    logging:
-      driver: json-file
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - UMASK=002
-      - TZ=Australia/Melbourne
-    volumes:
-      - /etc/localtime:/etc/localtime:ro
-      - /mnt/vault/arr2/config/readarr:/config
-      - /mnt/vault/arr2/data/media:/data
+  # readarr:
+  #   container_name: readarr
+  #   image: lscr.io/linuxserver/readarr
+  #   ports:
+  #     - "8787:8787"
+  #   logging:
+  #     driver: json-file
+  #   environment:
+  #     - PUID=1000
+  #     - PGID=1000
+  #     - UMASK=002
+  #     - TZ=Australia/Melbourne
+  #   volumes:
+  #     - /etc/localtime:/etc/localtime:ro
+  #     - /mnt/vault/arr2/config/readarr:/config
+  #     - /mnt/vault/arr2/data/media:/data
 
   ## JELLYFIN
   jellyfin:
