@@ -148,7 +148,7 @@ services:
     container_name: qbittorrent
     image: lscr.io/linuxserver/qbittorrent
     ports:
-      - "8081:8081"
+      - "8080:8080"
     logging:
       driver: json-file
     environment:
@@ -156,7 +156,7 @@ services:
       - PGID=1000
       - UMASK=002
       - TZ=Australia/Melbourne
-      - WEBUI_PORTS=8081/tcp,8081/udp
+      - WEBUI_PORTS=8080/tcp,8080/udp
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /mnt/vault/arr2/config/qbitorrent:/config
