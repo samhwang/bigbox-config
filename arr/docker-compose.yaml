@@ -9,8 +9,8 @@ services:
     ports:
       - 7878:7878
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=3002
+      - PGID=3002
       - TZ=Australia/Melbourne
     volumes:
       - /etc/localtime:/etc/localtime:ro
@@ -26,8 +26,8 @@ services:
     ports:
       - 8989:8989
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=3002
+      - PGID=3002
       - TZ=Australia/Melbourne
     volumes:
       - /etc/localtime:/etc/localtime:ro
@@ -43,8 +43,8 @@ services:
     ports:
       - 6767:6767
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=3002
+      - PGID=3002
       - TZ=Australia/Melbourne
     volumes:
       - /etc/localtime:/etc/localtime:ro
@@ -57,8 +57,8 @@ services:
     ports:
       - "8686:8686"
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=3002
+      - PGID=3002
       - UMASK=002
       - TZ=Australia/Melbourne
     volumes:
@@ -74,8 +74,8 @@ services:
     logging:
       driver: json-file
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=3002
+      - PGID=3002
       - UMASK=002
       - TZ=Australia/Melbourne
     volumes:
@@ -90,8 +90,8 @@ services:
   #   logging:
   #     driver: json-file
   #   environment:
-  #     - PUID=1000
-  #     - PGID=1000
+  #     - PUID=3002
+  #     - PGID=3002
   #     - UMASK=002
   #     - TZ=Australia/Melbourne
   #   volumes:
@@ -106,8 +106,8 @@ services:
     ports:
       - "8096:8096"
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=3002
+      - PGID=3002
       - UMASK=002
       - TZ=Australia/Melbourne
     volumes:
@@ -121,8 +121,8 @@ services:
     ports:
       - "5055:5055"
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=3002
+      - PGID=3002
       - UMASK=002
       - TZ=Australia/Melbourne
     volumes:
@@ -136,8 +136,8 @@ services:
     ports:
       - "9117:9117"
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=3002
+      - PGID=3002
       - UMASK=002
       - TZ=Australia/Melbourne
     volumes:
@@ -152,8 +152,8 @@ services:
     logging:
       driver: json-file
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=3002
+      - PGID=3002
       - UMASK=002
       - TZ=Australia/Melbourne
       - WEBUI_PORTS=8080/tcp,8080/udp
@@ -172,8 +172,8 @@ services:
   #     - 8082:8080
   #     - 9090:9090
   #   environment:
-  #     - PUID=1000
-  #     - PGID=1000
+  #     - PUID=3002
+  #     - PGID=3002
   #     - TZ=Australia/Melbourne
   #   volumes:
   #     - /etc/localtime:/etc/localtime:ro
