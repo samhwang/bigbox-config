@@ -54,20 +54,20 @@ services:
       - /mnt/vault/arr2/config/bazarr:/config
       - /mnt/vault/arr2/data/media:/data/media
 
-  lidarr:
-    container_name: lidarr
-    image: lscr.io/linuxserver/lidarr
-    ports:
-      - "8686:8686"
-    environment:
-      - PUID=3002
-      - PGID=3002
-      - UMASK=002
-      - TZ=Australia/Melbourne
-    volumes:
-      - /etc/localtime:/etc/localtime:ro
-      - /mnt/vault/arr2/config/lidarr:/config
-      - /mnt/vault/arr2/data/media:/data
+  # lidarr:
+  #   container_name: lidarr
+  #   image: lscr.io/linuxserver/lidarr
+  #   ports:
+  #     - "8686:8686"
+  #   environment:
+  #     - PUID=3002
+  #     - PGID=3002
+  #     - UMASK=002
+  #     - TZ=Australia/Melbourne
+  #   volumes:
+  #     - /etc/localtime:/etc/localtime:ro
+  #     - /mnt/vault/arr2/config/lidarr:/config
+  #     - /mnt/vault/arr2/data/media:/data
 
   prowlarr:
     container_name: prowlarr
