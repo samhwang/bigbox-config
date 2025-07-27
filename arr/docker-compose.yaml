@@ -182,3 +182,15 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - /mnt/vault/arr2/config/sabnzbd:/config
       - /mnt/vault/arr2/data/usenet:/data/usenet:rw
+
+  flaresolverr:
+    image: ghcr.io/flaresolverr/flaresolverr
+    container_name: flaresolverr
+    environment:
+      - LOG_LEVEL=info
+      - LOG_HTML=false
+      - CAPTCHA_SOLVER=none
+      - TZ=Australia/Melbourne
+    ports:
+      - "8191:8191"
+    restart: unless-stopped
