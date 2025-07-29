@@ -132,7 +132,7 @@ services:
       - TZ=Australia/Melbourne
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - /mnt/vault/arr2/config/jellyseer:/config
+      - /mnt/vault/arr2/config/jellyseer:/app/config
     healthcheck:
       test: wget --no-verbose --tries=1 --spider http://localhost:5055/api/v1/status || exit 1
       start_period: 20s
