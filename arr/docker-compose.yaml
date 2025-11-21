@@ -186,3 +186,23 @@ services:
     ports:
       - "8191:8191"
     restart: unless-stopped
+
+  ## VPN
+  gluetun:
+    image: qmcgaw/gluetun
+    container_name: gluetun
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun:/dev/net/tun
+    ports:
+      - 8888:8888/tcp # HTTP proxy
+      - 8388:8388/tcp # Shadowsocks
+      - 8388:8388/udp # Shadowsocks
+    environment:
+      - VPN_SERVICE_PROVIDER=nordvpn
+      - VPN_TYPE=wireguard
+      - WIREGUARD_PRIVATE_KEY=$NORDVPN_WIREGUARD_ACCESS_KEY
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /mnt/vault/arr2/config/gluetun:/gluetun
