@@ -205,6 +205,8 @@ services:
       - VPN_SERVICE_PROVIDER=nordvpn
       - VPN_TYPE=wireguard
       - WIREGUARD_PRIVATE_KEY=$NORDVPN_WIREGUARD_ACCESS_KEY
+      - TZ=Australia/Melbourne
+      - UPDATER_PERIOD=48h
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /mnt/vault/arr2/config/gluetun:/gluetun
