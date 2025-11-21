@@ -72,6 +72,7 @@ services:
   prowlarr:
     container_name: prowlarr
     image: ghcr.io/hotio/prowlarr
+    restart: unless-stopped
     ports:
       - "9696:9696"
     logging:
@@ -89,6 +90,7 @@ services:
   jellyfin:
     container_name: jellyfin
     image: jellyfin/jellyfin
+    restart: unless-stopped
     ports:
       - "8096:8096"
     environment:
@@ -101,13 +103,13 @@ services:
       - /mnt/vault/arr2/config/jellyfin:/config
       - /mnt/vault/arr2/data/media:/data/media
       - /mnt/vault/arr2/data/cache:/data/cache
-    restart: unless-stopped
 
   jellyseerr:
     container_name: jellyseerr
     image: fallenbagel/jellyseerr
     ports:
       - "5055:5055"
+    restart: unless-stopped
     environment:
       - PUID=3002
       - PGID=3002
@@ -122,7 +124,6 @@ services:
       timeout: 3s
       interval: 15s
       retries: 3
-    restart: unless-stopped
 
   ## DOWNLOADERS
   # jackett:
@@ -178,6 +179,7 @@ services:
   flaresolverr:
     image: ghcr.io/flaresolverr/flaresolverr
     container_name: flaresolverr
+    restart: unless-stopped
     environment:
       - LOG_LEVEL=info
       - LOG_HTML=false
@@ -185,12 +187,12 @@ services:
       - TZ=Australia/Melbourne
     ports:
       - "8191:8191"
-    restart: unless-stopped
 
   ## VPN
   gluetun:
     image: qmcgaw/gluetun
     container_name: gluetun
+    restart: unless-stopped
     cap_add:
       - NET_ADMIN
     devices:
