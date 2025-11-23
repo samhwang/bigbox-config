@@ -208,8 +208,9 @@ services:
       - TZ=Australia/Melbourne
       - UPDATER_PERIOD=48h
       - BLOCK_MALICIOUS=off
-      - BLOCK_SURVEILLANCE=on
-      - BLOCK_ADS=on
+      - BLOCK_SURVEILLANCE=off
+      - BLOCK_ADS=off
+      - DNS_REBINDING_PROTECTION_EXEMPT_HOSTNAMES=sugoi.pomf.se,ipv4.tracker.harry.lu,ipv6.tracker.harry.lu
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /mnt/vault/arr2/config/gluetun:/gluetun
