@@ -155,7 +155,8 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - /mnt/vault/arr2/config/qbitorrent:/config
       - /mnt/vault/arr2/data/torrents:/data/torrents
-    network_mode: 'service:gluetun'
+    ports:
+      - 8080:8080
 
   sabnzbd:
     container_name: sabnzbd
@@ -188,29 +189,29 @@ services:
       - "8191:8191"
 
   ## VPN
-  gluetun:
-    image: qmcgaw/gluetun
-    container_name: gluetun
-    restart: unless-stopped
-    cap_add:
-      - NET_ADMIN
-    devices:
-      - /dev/net/tun:/dev/net/tun
-    ports:
-      - 8888:8888/tcp # HTTP proxy
-      - 8388:8388/tcp # Shadowsocks
-      - 8388:8388/udp # Shadowsocks
-      - 8080:8080     # For qBittorrent
-    environment:
-      - VPN_SERVICE_PROVIDER=nordvpn
-      - VPN_TYPE=wireguard
-      - WIREGUARD_PRIVATE_KEY=$NORDVPN_WIREGUARD_ACCESS_KEY
-      - TZ=Australia/Melbourne
-      - UPDATER_PERIOD=48h
-      - BLOCK_MALICIOUS=off
-      - BLOCK_SURVEILLANCE=off
-      - BLOCK_ADS=off
-      - DNS_REBINDING_PROTECTION_EXEMPT_HOSTNAMES=sugoi.pomf.se,ipv4.tracker.harry.lu,ipv6.tracker.harry.lu
-    volumes:
-      - /etc/localtime:/etc/localtime:ro
-      - /mnt/vault/arr2/config/gluetun:/gluetun
+  # gluetun:
+  #   image: qmcgaw/gluetun
+  #   container_name: gluetun
+  #   restart: unless-stopped
+  #   cap_add:
+  #     - NET_ADMIN
+  #   devices:
+  #     - /dev/net/tun:/dev/net/tun
+  #   ports:
+  #     - 8888:8888/tcp # HTTP proxy
+  #     - 8388:8388/tcp # Shadowsocks
+  #     - 8388:8388/udp # Shadowsocks
+  #     - 8080:8080     # For qBittorrent
+  #   environment:
+  #     - VPN_SERVICE_PROVIDER=nordvpn
+  #     - VPN_TYPE=wireguard
+  #     - WIREGUARD_PRIVATE_KEY=$NORDVPN_WIREGUARD_ACCESS_KEY
+  #     - TZ=Australia/Melbourne
+  #     - UPDATER_PERIOD=48h
+  #     - BLOCK_MALICIOUS=off
+  #     - BLOCK_SURVEILLANCE=off
+  #     - BLOCK_ADS=off
+  #     - DNS_REBINDING_PROTECTION_EXEMPT_HOSTNAMES=sugoi.pomf.se,ipv4.tracker.harry.lu,ipv6.tracker.harry.lu
+  #   volumes:
+  #     - /etc/localtime:/etc/localtime:ro
+  #     - /mnt/vault/arr2/config/gluetun:/gluetun
