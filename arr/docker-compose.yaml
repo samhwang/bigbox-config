@@ -150,13 +150,13 @@ services:
       - PGID=3002
       - UMASK=002
       - TZ=Australia/Melbourne
-      - WEBUI_PORTS=8080/tcp,8080/udp
+      - WEBUI_PORTS=8081/tcp,8081/udp
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /mnt/vault/arr2/config/qbitorrent:/config
       - /mnt/vault/arr2/data/torrents:/data/torrents
     ports:
-      - 8080:8080
+      - 8081:8081
 
   sabnzbd:
     container_name: sabnzbd
@@ -215,3 +215,17 @@ services:
   #   volumes:
   #     - /etc/localtime:/etc/localtime:ro
   #     - /mnt/vault/arr2/config/gluetun:/gluetun
+
+  ## Proxy
+  traefik:
+    image: traefik:ramequin
+    container_name: traefik
+    restart: unless-stopped
+    ports:
+      - 80:80
+      - 443:443
+      - 8080:8080
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /mnt/vault/arr2/config/traefik:/etc/traefik:ro
+      - /var/run/docker.sock:/var/run/docker.sock

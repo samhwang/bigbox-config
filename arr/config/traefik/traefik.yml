@@ -1,0 +1,40 @@
+# EntryPoints Configuration
+entryPoints:
+  web:
+    address: ":80"
+    http:
+      redirections:
+        entryPoint:
+          to: "websecure"
+          scheme: "https"
+          permanent: true
+
+  websecure:
+    address: ":443"
+    http:
+      tls: {}
+
+# TLS Configuration
+tls:
+  certificates:
+    - certFile: "/etc/traefik/certs/cert.crt"
+      keyFile: "/etc/traefik/certs/cert.key"
+
+# Providers Configuration
+providers:
+  docker:
+    exposedByDefault: false
+
+# API & Dashboard Configuration
+api:
+  dashboard: true
+  insecure: false
+
+# Observability Configuration
+log:
+  level: "ERROR"
+
+accessLog: {}
+
+metrics:
+  prometheus: {}
