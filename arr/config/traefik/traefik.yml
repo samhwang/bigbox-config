@@ -24,7 +24,7 @@ tls:
 providers:
   docker:
     exposedByDefault: false
-    network: ix-arr-stack_default
+    network: traefik-proxy
 
 # API & Dashboard Configuration
 api:
