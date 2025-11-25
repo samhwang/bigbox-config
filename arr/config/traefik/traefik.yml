@@ -39,3 +39,12 @@ accessLog: {}
 
 metrics:
   prometheus: {}
+  otlp:
+    serviceName: "traefik"
+    addRoutersLabels: true
+
+tracing:
+  serviceName: "traefik"
+  otlp:
+    grpc:
+      endpoint: "http://jaeger:4317"

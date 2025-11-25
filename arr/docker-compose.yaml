@@ -323,6 +323,21 @@ services:
     networks:
       - traefik-proxy
 
+  # Tracing
+  jaeger:
+    image: cr.jaegertracing.io/jaegertracing/jaeger:2.12.0
+    ports:
+      - 16686:16686
+      - 4317:4317
+      - 4318:4318
+      - 5778:5778
+      - 9411:9411
+    networks:
+      - traefik-proxy
+    labels:
+      - "traefik.enable=false"
+
+
 networks:
   traefik-proxy:
     driver: bridge
