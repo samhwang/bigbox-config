@@ -24,6 +24,7 @@ tls:
 providers:
   docker:
     exposedByDefault: false
+    network: ix-arr-stack_default
 
 # API & Dashboard Configuration
 api:
@@ -32,7 +33,7 @@ api:
 
 # Observability Configuration
 log:
-  level: "ERROR"
+  level: "INFO"
 
 accessLog: {}
 
