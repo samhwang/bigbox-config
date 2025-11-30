@@ -274,6 +274,7 @@ services:
       - 8388:8388/tcp # Shadowsocks
       - 8388:8388/udp # Shadowsocks
       - 8081:8081     # For qBittorrent
+      - 6881:6881     # For qBittorrent
     environment:
       - VPN_SERVICE_PROVIDER=nordvpn
       - VPN_TYPE=wireguard
