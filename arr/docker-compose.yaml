@@ -19,11 +19,6 @@ services:
       - /mnt/vault/arr2/data:/data
     networks:
       - traefik-proxy
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.radarr.rule=Host(`radarr.bigbox.samh.page`)"
-      - "traefik.http.routers.radarr.tls=true"
-      - "traefik.http.routers.radarr.entrypoints=websecure"
 
   sonarr:
     container_name: sonarr
@@ -44,11 +39,6 @@ services:
       - /mnt/vault/arr2/data:/data
     networks:
       - traefik-proxy
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.sonarr.rule=Host(`sonarr.bigbox.samh.page`)"
-      - "traefik.http.routers.sonarr.tls=true"
-      - "traefik.http.routers.sonarr.entrypoints=websecure"
 
   bazarr:
     container_name: bazarr
@@ -69,11 +59,6 @@ services:
       - /mnt/vault/arr2/data/media:/data/media
     networks:
       - traefik-proxy
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.bazarr.rule=Host(`bazarr.bigbox.samh.page`)"
-      - "traefik.http.routers.bazarr.tls=true"
-      - "traefik.http.routers.bazarr.entrypoints=websecure"
 
   # lidarr:
   #   container_name: lidarr
@@ -91,11 +76,6 @@ services:
   #     - /mnt/vault/arr2/data/media:/data
   #   networks:
   #     - traefik-proxy
-  #   labels:
-  #     - "traefik.enable=true"
-  #     - "traefik.http.routers.lidarr.rule=Host(`lidarr.bigbox.samh.page`)"
-  #     - "traefik.http.routers.lidarr.tls=true"
-  #     - "traefik.http.routers.lidarr.entrypoints=websecure"
 
   prowlarr:
     container_name: prowlarr
@@ -115,11 +95,6 @@ services:
       - /mnt/vault/arr2/config/prowlarr:/config
     networks:
       - traefik-proxy
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.prowlarr.rule=Host(`prowlarr.bigbox.samh.page`)"
-      - "traefik.http.routers.prowlarr.tls=true"
-      - "traefik.http.routers.prowlarr.entrypoints=websecure"
 
   ## JELLYFIN
   jellyfin:
@@ -140,11 +115,6 @@ services:
       - /mnt/vault/arr2/data/cache:/data/cache
     networks:
       - traefik-proxy
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.jellyfin.rule=Host(`jellyfin.bigbox.samh.page`)"
-      - "traefik.http.routers.jellyfin.tls=true"
-      - "traefik.http.routers.jellyfin.entrypoints=websecure"
 
   jellyseerr:
     container_name: jellyseerr
@@ -162,11 +132,6 @@ services:
       - /mnt/vault/arr2/config/jellyseer:/app/config
     networks:
       - traefik-proxy
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.jellyseerr.rule=Host(`jellyseerr.bigbox.samh.page`)"
-      - "traefik.http.routers.jellyseerr.tls=true"
-      - "traefik.http.routers.jellyseerr.entrypoints=websecure"
     healthcheck:
       test: wget --no-verbose --tries=1 --spider http://localhost:5055/api/v1/status || exit 1
       start_period: 20s
@@ -190,11 +155,6 @@ services:
   #     - /mnt/vault/arr2/config/jackett:/config
   #   networks:
   #     - traefik-proxy
-  #   labels:
-  #     - "traefik.enable=true"
-  #     - "traefik.http.routers.jackett.rule=Host(`jackett.bigbox.samh.page`)"
-  #     - "traefik.http.routers.jackett.tls=true"
-  #     - "traefik.http.routers.jackett.entrypoints=websecure"
 
   qbittorrent:
     image: ghcr.io/hotio/qbittorrent
@@ -216,33 +176,29 @@ services:
     # networks:
     #   - traefik-proxy
     network_mode: "service:gluetun"
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.qbittorrent.rule=Host(`qbittorrent.bigbox.samh.page`)"
-      - "traefik.http.routers.qbittorrent.tls=true"
-      - "traefik.http.routers.qbittorrent.entrypoints=websecure"
 
-  sabnzbd:
-    container_name: sabnzbd
-    image: ghcr.io/hotio/sabnzbd
-    restart: unless-stopped
-    logging:
-      driver: json-file
-    ports:
-      - 8082:8080
-      - 9090:9090
-    environment:
-      - PUID=3002
-      - PGID=3002
-      - TZ=Australia/Melbourne
-    volumes:
-      - /etc/localtime:/etc/localtime:ro
-      - /mnt/vault/arr2/config/sabnzbd:/config
-      - /mnt/vault/arr2/data/usenet:/data/usenet:rw
-    networks:
-      - traefik-proxy
-    labels:
-      - "traefik.enable=false"
+
+  # sabnzbd:
+  #   container_name: sabnzbd
+  #   image: ghcr.io/hotio/sabnzbd
+  #   restart: unless-stopped
+  #   logging:
+  #     driver: json-file
+  #   ports:
+  #     - 8082:8080
+  #     - 9090:9090
+  #   environment:
+  #     - PUID=3002
+  #     - PGID=3002
+  #     - TZ=Australia/Melbourne
+  #   volumes:
+  #     - /etc/localtime:/etc/localtime:ro
+  #     - /mnt/vault/arr2/config/sabnzbd:/config
+  #     - /mnt/vault/arr2/data/usenet:/data/usenet:rw
+  #   networks:
+  #     - traefik-proxy
+  #   labels:
+  #     - "traefik.enable=false"
 
   flaresolverr:
     image: ghcr.io/flaresolverr/flaresolverr
@@ -306,22 +262,11 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - /mnt/vault/arr2/config/traefik:/etc/traefik:ro
       - /var/run/docker.sock:/var/run/docker.sock
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.dashboard.rule=Host(`dashboard.bigbox.samh.page`)"
-      - "traefik.http.routers.dashboard.tls=true"
-      - "traefik.http.routers.dashboard.entrypoints=websecure"
-      - "traefik.http.routers.dashboard.service=api@internal"
     networks:
       - traefik-proxy
 
   whoami:
     image: traefik/whoami
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.whoami.rule=Host(`whoami.bigbox.samh.page`)"
-      - "traefik.http.routers.whoami.tls=true"
-      - "traefik.http.routers.whoami.entrypoints=websecure"
     networks:
       - traefik-proxy
 

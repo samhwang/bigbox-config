@@ -1,0 +1,34 @@
+http:
+  middlewares:
+    strip-radarr:
+      stripPrefix:
+        prefixes:
+          - "/radarr"
+    strip-sonarr:
+      stripPrefix:
+        prefixes:
+          - "/sonarr"
+    strip-bazarr:
+      stripPrefix:
+        prefixes:
+          - "/bazarr"
+    strip-prowlarr:
+      stripPrefix:
+        prefixes:
+          - "/prowlarr"
+    strip-jellyfin:
+      stripPrefix:
+        prefixes:
+          - "/jellyfin"
+    strip-jellyseerr:
+      stripPrefix:
+        prefixes:
+          - "/jellyseerr"
+    strip-qbittorrent:
+      stripPrefix:
+        prefixes:
+          - "/qbittorrent"
+    strip-whoami:
+      stripPrefix:
+        prefixes:
+          - "/whoami"

@@ -1,0 +1,41 @@
+http:
+  services:
+    radarr:
+      loadBalancer:
+        servers:
+          - url: "http://radarr:7878"
+    
+    sonarr:
+      loadBalancer:
+        servers:
+          - url: "http://sonarr:8989"
+    
+    bazarr:
+      loadBalancer:
+        servers:
+          - url: "http://bazarr:6767"
+    
+    prowlarr:
+      loadBalancer:
+        servers:
+          - url: "http://prowlarr:9696"
+    
+    jellyfin:
+      loadBalancer:
+        servers:
+          - url: "http://jellyfin:8096"
+    
+    jellyseerr:
+      loadBalancer:
+        servers:
+          - url: "http://jellyseerr:5055"
+    
+    qbittorrent:
+      loadBalancer:
+        servers:
+          - url: "http://qbittorrent:8080"
+    
+    whoami:
+      loadBalancer:
+        servers:
+          - url: "http://whoami:80"

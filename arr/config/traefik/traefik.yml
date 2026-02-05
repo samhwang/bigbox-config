@@ -25,6 +25,9 @@ providers:
   docker:
     exposedByDefault: false
     network: traefik-proxy
+  file:
+    directory: "/etc/traefik/conf"
+    watch: true
 
 # API & Dashboard Configuration
 api:

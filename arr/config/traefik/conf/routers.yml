@@ -1,0 +1,73 @@
+http:
+  routers:
+    # ARR Stack Routers
+    radarr:
+      rule: "Host(`bigbox.samh.page`) && PathPrefix(`/radarr`)"
+      entryPoints:
+        - "websecure"
+      middlewares:
+        - "strip-radarr"
+      service: "radarr"
+
+    sonarr:
+      rule: "Host(`bigbox.samh.page`) && PathPrefix(`/sonarr`)"
+      entryPoints:
+        - "websecure"
+      middlewares:
+        - "strip-sonarr"
+      service: "sonarr"
+
+    bazarr:
+      rule: "Host(`bigbox.samh.page`) && PathPrefix(`/bazarr`)"
+      entryPoints:
+        - "websecure"
+      middlewares:
+        - "strip-bazarr"
+      service: "bazarr"
+
+    prowlarr:
+      rule: "Host(`bigbox.samh.page`) && PathPrefix(`/prowlarr`)"
+      entryPoints:
+        - "websecure"
+      middlewares:
+        - "strip-prowlarr"
+      service: "prowlarr"
+
+    jellyfin:
+      rule: "Host(`bigbox.samh.page`) && PathPrefix(`/jellyfin`)"
+      entryPoints:
+        - "websecure"
+      middlewares:
+        - "strip-jellyfin"
+      service: "jellyfin"
+
+    jellyseerr:
+      rule: "Host(`bigbox.samh.page`) && PathPrefix(`/jellyseerr`)"
+      entryPoints:
+        - "websecure"
+      middlewares:
+        - "strip-jellyseerr"
+      service: "jellyseerr"
+
+    qbittorrent:
+      rule: "Host(`bigbox.samh.page`) && PathPrefix(`/qbittorrent`)"
+      entryPoints:
+        - "websecure"
+      middlewares:
+        - "strip-qbittorrent"
+      service: "qbittorrent"
+
+    whoami:
+      rule: "Host(`bigbox.samh.page`) && PathPrefix(`/whoami`)"
+      entryPoints:
+        - "websecure"
+      middlewares:
+        - "strip-whoami"
+      service: "whoami"
+
+    # Dashboard (keep subdomain)
+    dashboard:
+      rule: "Host(`dashboard.bigbox.samh.page`)"
+      entryPoints:
+        - "websecure"
+      service: "api@internal"
