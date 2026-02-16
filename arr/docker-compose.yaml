@@ -116,9 +116,9 @@ services:
     networks:
       - traefik-proxy
 
-  jellyseerr:
-    container_name: jellyseerr
-    image: fallenbagel/jellyseerr
+  seerr:
+    container_name: seerr
+    image: ghcr.io/seerr-team/seerr:latest
     ports:
       - "5055:5055"
     restart: unless-stopped
@@ -129,7 +129,7 @@ services:
       - TZ=Australia/Melbourne
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - /mnt/vault/arr2/config/jellyseer:/app/config
+      - /mnt/vault/arr2/config/seerr:/app/config
     networks:
       - traefik-proxy
     healthcheck:
