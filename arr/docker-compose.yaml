@@ -18,7 +18,7 @@ services:
       - /mnt/vault/arr2/config/radarr:/config
       - /mnt/vault/arr2/data:/data
     networks:
-      - traefik-proxy
+      - arr-stack
 
   sonarr:
     container_name: sonarr
@@ -38,7 +38,7 @@ services:
       - /mnt/vault/arr2/config/sonarr:/config
       - /mnt/vault/arr2/data:/data
     networks:
-      - traefik-proxy
+      - arr-stack
 
   bazarr:
     container_name: bazarr
@@ -58,7 +58,7 @@ services:
       - /mnt/vault/arr2/config/bazarr:/config
       - /mnt/vault/arr2/data/media:/data/media
     networks:
-      - traefik-proxy
+      - arr-stack
 
   prowlarr:
     container_name: prowlarr
@@ -77,7 +77,7 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - /mnt/vault/arr2/config/prowlarr:/config
     networks:
-      - traefik-proxy
+      - arr-stack
 
   ## JELLYFIN
   jellyfin:
@@ -97,6 +97,7 @@ services:
       - /mnt/vault/arr2/data/media:/data/media
       - /mnt/vault/arr2/data/cache:/data/cache
     networks:
+      - arr-stack
       - traefik-proxy
 
   seerr:
@@ -114,6 +115,7 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - /mnt/vault/arr2/config/seerr:/app/config
     networks:
+      - arr-stack
       - traefik-proxy
     healthcheck:
       test: wget --no-verbose --tries=1 --spider http://localhost:5055/api/v1/status || exit 1
@@ -141,6 +143,7 @@ services:
     # ports:
     # - 8081:8081
     # networks:
+    #   - arr-stack
     #   - traefik-proxy
     network_mode: "service:gluetun"
 
@@ -156,9 +159,7 @@ services:
     ports:
       - "8191:8191"
     networks:
-      - traefik-proxy
-    labels:
-      - "traefik.enable=false"
+      - arr-stack
 
   ## VPN
   gluetun:
@@ -189,9 +190,7 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - /mnt/vault/arr2/config/gluetun:/gluetun
     networks:
-      - traefik-proxy
-    labels:
-      - "traefik.enable=false"
+      - arr-stack
 
   ## Proxy
   traefik:
@@ -215,6 +214,9 @@ services:
       - traefik-proxy
 
 networks:
+  arr-stack:
+    driver: bridge
+    name: arr-stack
   traefik-proxy:
     driver: bridge
     name: traefik-proxy
