@@ -60,23 +60,6 @@ services:
     networks:
       - traefik-proxy
 
-  # lidarr:
-  #   container_name: lidarr
-  #   image: ghcr.io/hotio/lidarr
-  #   ports:
-  #     - "8686:8686"
-  #   environment:
-  #     - PUID=3002
-  #     - PGID=3002
-  #     - UMASK=002
-  #     - TZ=Australia/Melbourne
-  #   volumes:
-  #     - /etc/localtime:/etc/localtime:ro
-  #     - /mnt/vault/arr2/config/lidarr:/config
-  #     - /mnt/vault/arr2/data/media:/data
-  #   networks:
-  #     - traefik-proxy
-
   prowlarr:
     container_name: prowlarr
     image: ghcr.io/hotio/prowlarr
@@ -140,22 +123,6 @@ services:
       retries: 3
 
   ## DOWNLOADERS
-  # jackett:
-  #   container_name: jackett
-  #   image: ghcr.io/hotio/jackett
-  #   ports:
-  #     - "9117:9117"
-  #   environment:
-  #     - PUID=3002
-  #     - PGID=3002
-  #     - UMASK=002
-  #     - TZ=Australia/Melbourne
-  #   volumes:
-  #     - /etc/localtime:/etc/localtime:ro
-  #     - /mnt/vault/arr2/config/jackett:/config
-  #   networks:
-  #     - traefik-proxy
-
   qbittorrent:
     image: ghcr.io/hotio/qbittorrent
     container_name: qbittorrent
@@ -176,29 +143,6 @@ services:
     # networks:
     #   - traefik-proxy
     network_mode: "service:gluetun"
-
-
-  # sabnzbd:
-  #   container_name: sabnzbd
-  #   image: ghcr.io/hotio/sabnzbd
-  #   restart: unless-stopped
-  #   logging:
-  #     driver: json-file
-  #   ports:
-  #     - 8082:8080
-  #     - 9090:9090
-  #   environment:
-  #     - PUID=3002
-  #     - PGID=3002
-  #     - TZ=Australia/Melbourne
-  #   volumes:
-  #     - /etc/localtime:/etc/localtime:ro
-  #     - /mnt/vault/arr2/config/sabnzbd:/config
-  #     - /mnt/vault/arr2/data/usenet:/data/usenet:rw
-  #   networks:
-  #     - traefik-proxy
-  #   labels:
-  #     - "traefik.enable=false"
 
   flaresolverr:
     image: ghcr.io/flaresolverr/flaresolverr
