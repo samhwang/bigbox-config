@@ -190,8 +190,10 @@ services:
       - 6881:6881     # For qBittorrent
     environment:
       - VPN_SERVICE_PROVIDER=nordvpn
-      - VPN_TYPE=wireguard
-      - WIREGUARD_PRIVATE_KEY=$NORDVPN_WIREGUARD_ACCESS_KEY
+      - VPN_TYPE=openvpn
+      # - WIREGUARD_PRIVATE_KEY=
+      - OPENVPN_USER=$OPENVPN_USER
+      - OPENVPN_PASSWORD=$OPENVPN_PASSWORD
       - TZ=Australia/Melbourne
       - UPDATER_PERIOD=48h
       - BLOCK_MALICIOUS=off
