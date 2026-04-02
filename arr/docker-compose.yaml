@@ -175,7 +175,7 @@ services:
 
   ## VPN
   gluetun:
-    image: qmcgaw/gluetun
+    image: qmcgaw/gluetun:v3.40.0
     container_name: gluetun
     restart: unless-stopped
     cap_add:
