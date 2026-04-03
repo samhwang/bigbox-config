@@ -169,9 +169,8 @@ services:
       - LOG_LEVEL=info
       - LOG_HTML=false
       - TZ=Australia/Melbourne
-      - PORT=8192
     ports:
-      - "8192:8192"
+      - "8192:8191"
     networks:
       - arr-stack
 
