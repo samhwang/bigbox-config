@@ -91,7 +91,7 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /mnt/vault/arr2/config/decluttarr/config.yaml:/app/config/config.yaml
-      - /mnt/vault/arr2/config/decluttarr/logs:/ap/logs
+      - /mnt/vault/arr2/config/decluttarr/logs:/app/logs
     networks:
       - arr-stack
 

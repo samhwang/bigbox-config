@@ -1,5 +1,5 @@
 general:
-  log_level: INFO
+  log_level: DEBUG
   test_run: false
   timer: 10
   # request_timeout: 15 # Optional: timeout for all HTTP/API calls in seconds
