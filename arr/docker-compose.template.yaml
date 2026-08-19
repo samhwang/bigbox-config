@@ -79,7 +79,7 @@ services:
     networks:
       - arr-stack
 
-  decluttar:
+  decluttarr:
     image: ghcr.io/manimatter/decluttarr
     container_name: decluttarr
     restart: unless-stopped
@@ -90,8 +90,8 @@ services:
       - TZ=Australia/Melbourne
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - /mnt/vault/arr2/config/decluttar/config.yaml:/app/config/config.yaml
-      - /mnt/vault/arr2/config/decluttar/logs:/ap/logs
+      - /mnt/vault/arr2/config/decluttarr/config.yaml:/app/config/config.yaml
+      - /mnt/vault/arr2/config/decluttarr/logs:/ap/logs
     networks:
       - arr-stack
 
