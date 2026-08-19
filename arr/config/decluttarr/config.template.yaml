@@ -60,6 +60,6 @@ instances:
 
 download_clients:
   qbittorrent:
-    - base_url: "http://qbittorrent:8080"
+    - base_url: "http://gluetun:8081"
       api_key: "{{ op://Private/BigBox - QBittorrent/API Key }}"
       name: "qBittorrent" # (Must correspond with what is specified in your *arr as download client name)
