@@ -53,13 +53,13 @@ jobs:
 instances:
   sonarr:
     - base_url: "http://sonarr:8989"
-      api_key: "SONARR_API_KEY"
+      api_key: "{{ op://Private/BigBox - Sonarr/API Key }}"
   radarr:
     - base_url: "http://radarr:7878"
-      api_key: "RADARR_API_KEY"
+      api_key: "{{ op://Private/BigBox - Radarr/API Key }}"
 
 download_clients:
   qbittorrent:
     - base_url: "http://qbittorrent:8080"
-      api_key: "QBIT_KEY"
+      api_key: "{{ op://Private/BigBox - QBittorrent/API Key }}"
       name: "qBittorrent" # (Must correspond with what is specified in your *arr as download client name)
