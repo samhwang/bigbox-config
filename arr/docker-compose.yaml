@@ -79,6 +79,22 @@ services:
     networks:
       - arr-stack
 
+  decluttar:
+    image: ghcr.io/manimatter/decluttarr
+    container_name: decluttarr
+    restart: unless-stopped
+    environment:
+      - PUID=3002
+      - PGID=3002
+      - UMASK=002
+      - TZ=Australia/Melbourne
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /mnt/vault/arr2/config/decluttar/config.yaml:/app/config/config.yaml
+      - /mnt/vault/arr2/config/decluttar/logs:/ap/logs
+    networks:
+      - arr-stack
+
   ## JELLYFIN
   jellyfin:
     container_name: jellyfin
